@@ -15,8 +15,8 @@ const data = {
   section_title: ["名句精华", "网红档案、素材"],
   job: [
     { name: "Lee Tian Sienz", job: ["网红"] },
-    { name: "Wong Li De", job: ["网红的室友", "幕后摄影师"] },
-    { name: "Yeow Zi Qin", job: ["网红的室友", "网页工程师"] },
+    { name: "Li De", job: ["网红的室友", "幕后摄影师"] },
+    { name: "Zi Qin", job: ["网红的室友", "网页工程师"] },
   ],
 };
 
