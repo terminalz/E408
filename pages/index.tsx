@@ -156,7 +156,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
             {quotes?.map((q) => (
               <div key={q.id} className="w-full p-5 rounded shadow">
                 <h3>{q.title}</h3>
-                <h5 className="text-sm text-gray-400">{q.createdAt}</h5>
+                <h5 className="mt-3 text-sm text-gray-400">{q.createdAt}</h5>
               </div>
             ))}
           </div>
@@ -281,13 +281,13 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async () => {
   const posts: Post[] = await prisma.post.findMany({
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
 
   const quotes: Quote[] = await prisma.quote.findMany({
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
 
