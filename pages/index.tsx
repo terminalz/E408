@@ -191,6 +191,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
                         src={post?.url}
                         controls
                         className="w-full select-none max-h-80"
+                        controlsList="nodownload"
                       ></video>
                     </div>
                   )}
