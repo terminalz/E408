@@ -248,7 +248,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
         </div>
         <div className="w-full my-20">
           <h2>幕后备胎</h2>
-          <div className="grid w-full grid-cols-3 gap-5 mt-5">
+          <div className="grid w-full gap-5 mt-5 md:grid-cols-3">
             {data.job.map((j) => (
               <div
                 key={j.name}

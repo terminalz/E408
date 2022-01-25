@@ -9,6 +9,7 @@ const PostCard = ({ show, setShow }: any) => {
   const [video, setVideo] = useState<File | null>(null);
   const [videoURL, setVideoURL] = useState("");
   const [form, setForm] = useState<any>();
+  const [uploading, setUploading] = useState(false);
 
   const change = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value }: any = e.target;
@@ -30,7 +31,8 @@ const PostCard = ({ show, setShow }: any) => {
     if (image) {
       uploadBytes(storageRef, image).then(() => {
         getDownloadURL(storageRef).then(async (url) => {
-          await fetch("/api/post/create", {
+          setUploading(true);
+          const fetcher = await fetch("/api/post/create", {
             method: "POST",
             body: JSON.stringify({
               key: process.env.NEXT_PUBLIC_KEY,
@@ -46,12 +48,21 @@ const PostCard = ({ show, setShow }: any) => {
               "Content-Type": "application/json",
             },
           });
+          if (fetcher.ok) {
+            setUploading(false);
+            setImage(null);
+            setImageURL("");
+            setVideo(null);
+            setVideoURL("");
+            setShow(0);
+          }
         });
       });
     } else if (video) {
       uploadBytes(storageRef, video).then(() => {
         getDownloadURL(storageRef).then(async (url) => {
-          await fetch("/api/post/create", {
+          setUploading(true);
+          const fetcher = await fetch("/api/post/create", {
             method: "POST",
             body: JSON.stringify({
               key: process.env.NEXT_PUBLIC_KEY,
@@ -67,14 +78,17 @@ const PostCard = ({ show, setShow }: any) => {
               "Content-Type": "application/json",
             },
           });
+          if (fetcher.ok) {
+            setUploading(false);
+            setImage(null);
+            setImageURL("");
+            setVideo(null);
+            setVideoURL("");
+            setShow(0);
+          }
         });
       });
     }
-    setImage(null);
-    setImageURL("");
-    setVideo(null);
-    setVideoURL("");
-    setShow(0);
   };
   return (
     <div>
@@ -83,6 +97,7 @@ const PostCard = ({ show, setShow }: any) => {
           <div className="relative w-full max-w-3xl max-h-full px-10 py-10 mx-auto overflow-y-auto text-black bg-white rounded-lg shadow-2xl 2xl:max-w-5xl">
             <h3 className="mb-5 font-bold">Write a Post</h3>
             <button
+              disabled={uploading}
               type="button"
               onClick={() => {
                 setImage(null);
@@ -265,13 +280,15 @@ const PostCard = ({ show, setShow }: any) => {
               <div className="flex justify-end w-full gap-5 mt-8">
                 <button
                   type="submit"
-                  className="px-5 py-2 font-medium text-white transition-all duration-150 bg-black border-2 border-black rounded-md hover:bg-white hover:text-black"
+                  disabled={uploading}
+                  className="px-5 py-2 font-medium text-white transition-all duration-150 bg-black border-2 border-black rounded-md disabled:bg-opacity-10 disabled:border-0 disabled:hover:bg-black disabled:hover:bg-opacity-10 disabled:bg-black disabled:text-white disabled:hover:text-white hover:bg-white hover:text-black"
                 >
                   Post
                 </button>
                 <button
                   type="button"
-                  className="px-5 py-2 font-medium text-red-500 transition-all duration-150 bg-white border-2 border-red-500 rounded-md hover:bg-red-500 hover:text-white"
+                  disabled={uploading}
+                  className="px-5 py-2 font-medium text-red-500 transition-all duration-150 bg-white border-2 border-red-500 rounded-md disabled:bg-opacity-10 disabled:border-0 disabled:hover:bg-black disabled:hover:bg-opacity-10 disabled:bg-black disabled:text-white disabled:hover:text-white hover:bg-red-500 hover:text-white"
                   onClick={() => {
                     setShow(0);
                     setImage(null);
