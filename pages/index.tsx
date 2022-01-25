@@ -79,6 +79,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
         await fetch("/api/post/like", {
           method: "POST",
           body: JSON.stringify({
+            key: process.env.NEXT_PUBLIC_KEY,
             id,
             increment: true,
           }),
@@ -97,6 +98,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
         await fetch("/api/post/like", {
           method: "POST",
           body: JSON.stringify({
+            key: process.env.NEXT_PUBLIC_KEY,
             id,
             increment: false,
           }),

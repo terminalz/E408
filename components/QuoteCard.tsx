@@ -21,6 +21,7 @@ const QuoteCard = ({ show, setShow }: any) => {
     await fetch("/api/quote/create", {
       method: "POST",
       body: JSON.stringify({
+        key: process.env.NEXT_PUBLIC_KEY,
         quote: {
           ...form,
         },

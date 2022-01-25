@@ -33,6 +33,7 @@ const PostCard = ({ show, setShow }: any) => {
           await fetch("/api/post/create", {
             method: "POST",
             body: JSON.stringify({
+              key: process.env.NEXT_PUBLIC_KEY,
               post: {
                 ...form,
                 url,
@@ -53,6 +54,7 @@ const PostCard = ({ show, setShow }: any) => {
           await fetch("/api/post/create", {
             method: "POST",
             body: JSON.stringify({
+              key: process.env.NEXT_PUBLIC_KEY,
               post: {
                 ...form,
                 url,
@@ -123,7 +125,7 @@ const PostCard = ({ show, setShow }: any) => {
                 onChange={change}
               />
 
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <h5 className="mb-2 font-semibold">Media</h5>
                 {(video || image) && (
                   <div
@@ -140,7 +142,7 @@ const PostCard = ({ show, setShow }: any) => {
                 )}
               </div>
               {!video && !image ? (
-                <div className="w-full grid grid-cols-2 gap-5">
+                <div className="grid w-full grid-cols-2 gap-5">
                   <input
                     type="file"
                     accept="image/*"
@@ -242,7 +244,7 @@ const PostCard = ({ show, setShow }: any) => {
                 <div className="flex justify-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    className="h-80 mb-2 select-none"
+                    className="mb-2 select-none h-80"
                     src={imageURL}
                     alt="image"
                   />
@@ -255,7 +257,7 @@ const PostCard = ({ show, setShow }: any) => {
                   <video
                     src={videoURL}
                     controls
-                    className="select-none h-80 w-full mb-2"
+                    className="w-full mb-2 select-none h-80"
                   ></video>
                 </div>
               )}
