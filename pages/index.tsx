@@ -151,6 +151,26 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
           <h3>{data.title}</h3>
         </div>
         <div className="w-full mb-20">
+          <div className="flex items-center w-full mb-10 border-4 border-black rounded-md">
+            <div className="p-6 bg-black">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                className="text-white"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  fill="currentColor"
+                  d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"
+                />
+              </svg>
+            </div>
+            <div className="w-full p-5">
+              重大消息 ！！！ 请注意 ！！！ Tian Sienz 将暂时退出 E408
+            </div>
+          </div>
           <h2 className="mb-5">{data.section_title[0]}</h2>
           <div className="grid grid-cols-2 gap-5">
             {quotes?.map((q) => (
