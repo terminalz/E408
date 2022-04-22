@@ -10,8 +10,8 @@ import QuoteCard from "../components/QuoteCard";
 import Countdown from "../components/Countdown";
 
 const data = {
-  name: "Lee Tian Sienz",
-  title: "e408 网红之路",
+  name: "E408 代言人",
+  title: "tian sienz",
   section_title: ["名句精华", "网红档案、素材"],
   job: [
     { name: "Tian Sienz", job: ["网", "红"] },
@@ -123,7 +123,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
           <img
             src="/images/profile.jpg"
             alt="profile"
-            className="absolute object-cover rounded-full w-28 -bottom-10 ring-4 ring-white h-28"
+            className="absolute object-cover rounded-full pointer-events-none select-none w-28 -bottom-10 ring-4 ring-white h-28"
           />
           {access && (
             <button
@@ -168,7 +168,10 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
               </svg>
             </div>
             <div className="w-full p-5">
-              重大消息 ！！！ 请注意 ！！！ Tian Sienz 将暂时退出 E408
+              重大消息 ！！！ 请注意 ！！！ Tian Sienz{" "}
+              <a href="#birthday" className="text-blue-500">
+                即将生日
+              </a>
             </div>
           </div>
           <h2 className="mb-5">{data.section_title[0]}</h2>
@@ -283,7 +286,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
             ))}
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full" id="birthday">
           <h2 className="mb-5">你还有</h2>
           <Countdown />
           <div className="flex justify-end w-full">
