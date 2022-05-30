@@ -151,7 +151,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
           <h3>{data.title}</h3>
         </div>
         <div className="w-full mb-20">
-          <div className="flex items-center w-full mb-10 border-4 border-black rounded-md">
+          {/* <div className="flex items-center w-full mb-10 border-4 border-black rounded-md">
             <div className="p-6 bg-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +173,7 @@ const Home: NextPage<Props> = ({ posts, quotes }) => {
                 即将生日
               </a>
             </div>
-          </div>
+          </div> */}
           <h2 className="mb-5">{data.section_title[0]}</h2>
           <div className="grid grid-cols-2 gap-5">
             {quotes?.map((q) => (
